@@ -1,0 +1,20 @@
+sudo: required
+language: node_js
+node_js:
+- iojs
+- '7'
+services:
+- docker
+before_script:
+- npm install
+script:
+- docker build -t core-homeautomation .
+after_success:
+- ".travis/after_success.sh"
+branches:
+  only:
+  - master
+env:
+  global:
+    - HEROKU_APP=core-homeautomation-yan
+    - secure: fMAVDkJGYS6NHO+dKvmGwlo9M3GqyCtBhTmgxhRUgb2g+FcUX1Jleal/4pMlmVbcS64gNfea9ENJZakpHE2Q4UbEAbZFZJhZBGk+RtRivdq86OOj49kumCANPkp7kEviEEi7971JrYm1PvuW+doVqzMZHp/QNQkOzeUO19iqTYEB7Kys8u/SHyTVGRMMhsSiVGRaj2RjYeWZIvSGYUQjPBTYEZbDzv7b0UM020waOn/xF0MyTw0e9XIVZiX50aJ8O5ujqWGcsEp8NpRBUZHFv7eb88yOGasM1eolsHhgdqmh61FODhAy1/R/TMb3QuABVSAZ0M0GwaICwZawjEFoH6sL+bFj5SxBZ7AMGUQerLLzTX9KAl/72NuliR1hLXZ/NTt5UYTOPvmLeFMiaAM9FD9xKNOZQYox1MHKHOj0O+JMbwdIVFzN1fTXsTyx1nRvfrvsrah0OBSljq3qxGLUphzINoFpys9fVNaE51z1Dh3AZzZT963De6Q0zGkocYQWocnWuRN8e2x/luFagf+ghRWZNxh21GtNRgxfg3OrXikyqJFDNUuhHtGztUnbna4UDYEGq7nLqbphjhOr7ihhEXu6lj8IJ5qCtme8avppuOdRvMMWmMK5rZNmlW9OZOQ+1OyfKNrBS1jnSXq8blsDxyWhU8DUriRn1SSCdP8ubAk=

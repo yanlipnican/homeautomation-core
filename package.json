@@ -1,0 +1,26 @@
+{
+  "name": "core",
+  "version": "0.0.1",
+  "description": "",
+  "scripts": {
+    "dev": "set MONGODB_URI=\"mongodb://localhost:27017/homeautomation\" && nodemon dev.main.js --exec babel-node",
+    "start": "babel-node production.main.js --production",
+    "docker:build": "docker build -t core-homeautomation .",
+    "docker:run": "docker run -p 49160:8080 -e MONGODB_URI=\"mongodb://localhost:27017/homeautomation\" core-homeautomation"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "body-parser": "^1.18.2",
+    "express": "^4.15.5",
+    "mongodb": "^2.2.31"
+  },
+  "devDependencies": {
+    "dotenv": "^4.0.0",
+    "nodemon": "^1.12.1"
+  }
+}
